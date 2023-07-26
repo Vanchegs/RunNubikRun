@@ -39,7 +39,7 @@ using UnityEngine;
             { 
                 arrow.gameObject.SetActive(true);
                 arrow.transform.position = newPosition;
-                //arrow.transform.SetParent(transform);
+                arrow.transform.SetParent(transform);
                 arrow.InitArrow(arrowsConfig);
             }
         }
