@@ -1,8 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-    
 
+namespace ArrowLogic
+{
     public class ArrowFactory : MonoBehaviour
     {
         [SerializeField] private int spawnPointX;
@@ -44,3 +44,4 @@ using UnityEngine;
             }
         }
     }
+}
