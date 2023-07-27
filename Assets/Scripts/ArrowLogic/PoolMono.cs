@@ -19,7 +19,7 @@ namespace Vanchegs.ArrowLogic
             this.CreatePool(count);
         }
 
-        public PoolMono(T prefab, int count ,Transform container)
+        public PoolMono(T prefab, int count, Transform container)
         {
             this.prefab = prefab;
             this.container = container;
@@ -27,11 +27,20 @@ namespace Vanchegs.ArrowLogic
             this.CreatePool(count);
         }
 
+        public void ReturnToPool(T target)
+        {
+            if (target != null)
+            {
+                target.gameObject.SetActive(false);
+                target.transform.position = Vector3.zero;
+            }
+        }
+
         private void CreatePool(int count)
         {
             this.pool = new List<T>();
 
-            for(int i = 0; i < count; i++)
+            for (int i = 0; i < count; i++)
             {
                 this.CreateObject();
             }
@@ -41,38 +50,41 @@ namespace Vanchegs.ArrowLogic
         {
             var createObject = Object.Instantiate(this.prefab, this.container);
             createObject.gameObject.SetActive(isActiveByDefault);
+
+            createObject.GetComponent<Arrow>().Constructor(this);
+
             this.pool.Add(createObject);
             return createObject;
         }
 
         public bool HasFreeElement(out T element)
         {
-            foreach(var mono in pool)
+            foreach (var mono in pool)
             {
-                if(!mono.gameObject.activeInHierarchy)
+                if (!mono.gameObject.activeInHierarchy)
                 {
                     element = mono;
                     mono.gameObject.SetActive(true);
                     return true;
                 }
             }
-            
+
             element = null;
             return false;
         }
 
         public T GetFreeElement()
         {
-            if(this.HasFreeElement(out var element))
-            { 
+            if (this.HasFreeElement(out var element))
+            {
                 return element;
             }
 
-            if(this.autoExpand)
+            if (this.autoExpand)
             {
                 return this.CreateObject(isActiveByDefault: true);
             }
-        
+
             throw new System.Exception($"Thare is no free alements in pool of type {typeof(T)}");
         }
     }
