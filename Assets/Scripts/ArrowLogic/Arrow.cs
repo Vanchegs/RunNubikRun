@@ -8,6 +8,7 @@ namespace Vanchegs.ArrowLogic
         private ArrowConfig arrowConfig;
 
         private new Rigidbody2D rigidbody2D;
+        public SpriteRenderer arrowRenderer;
         private PoolMono<Arrow> poolMono;
 
         private void Awake()

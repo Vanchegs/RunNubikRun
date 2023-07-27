@@ -40,6 +40,11 @@ namespace Vanchegs.ArrowLogic
 
             var arrow = pool.GetFreeElement();
 
+            if(spawnPointX > 0)
+            {
+                arrow.arrowRenderer.flipX = true;
+            }
+
             if (arrow == null)
                 return;
 
