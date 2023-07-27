@@ -9,17 +9,18 @@ namespace Vanchegs.ArrowLogic
         [SerializeField] private float spawnRate;
         [SerializeField] private Arrow arrowPrefab;
         [SerializeField] private int poolCount = 20;
-        [SerializeField] private bool autoExpand = false;
+        [SerializeField] private bool autoExpand;
+        [SerializeField] private ArrowConfig arrowsConfig;
 
         private PoolMono<Arrow> pool;
 
-        [SerializeField] private ArrowConfig arrowsConfig;
-        
         private void Start()
         {
-            this.pool = new PoolMono<Arrow>(this.arrowPrefab, this.poolCount, this.transform);
-            this.pool.autoExpand = this.autoExpand;
-            
+            pool = new PoolMono<Arrow>(arrowPrefab, poolCount, transform)
+            {
+                autoExpand = this.autoExpand
+            };
+
             StartCoroutine(SpawningArrows());
         }
 
@@ -28,6 +29,7 @@ namespace Vanchegs.ArrowLogic
             while (true)
             {
                 CreateNewArrow();
+
                 yield return new WaitForSeconds(spawnRate);
             }
         }
@@ -35,14 +37,16 @@ namespace Vanchegs.ArrowLogic
         private void CreateNewArrow()
         {
             var newPosition = new Vector3(spawnPointX, Random.Range(-4.5f, 4.5f));
-            Arrow arrow = pool.GetFreeElement();
-            if(arrow != null)
-            { 
-                arrow.gameObject.SetActive(true);
-                arrow.transform.position = newPosition;
-                arrow.transform.SetParent(transform);
-                arrow.InitArrow(arrowsConfig);
-            }
+
+            var arrow = pool.GetFreeElement();
+
+            if (arrow == null)
+                return;
+
+            arrow.gameObject.SetActive(true);
+            arrow.transform.position = newPosition;
+            arrow.transform.SetParent(transform);
+            arrow.InitArrow(arrowsConfig);
         }
     }
 }
