@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ArrowLogic
+namespace Vanchegs.ArrowLogic
 {
     [System.Serializable]
     public class ArrowConfig

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace PlayerLogic
+namespace Vanchegs.PlayerLogic
 {
     public class PlayerMove : MonoBehaviour
     {

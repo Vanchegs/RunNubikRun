@@ -1,6 +1,7 @@
+using System;
 using UnityEngine;
 
-namespace ArrowLogic
+namespace Vanchegs.ArrowLogic
 {
     public class Arrow : MonoBehaviour
     {

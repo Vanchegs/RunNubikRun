@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace ArrowLogic
+namespace Vanchegs.ArrowLogic
 {
     public class ArrowFactory : MonoBehaviour
     {
@@ -17,9 +17,10 @@ namespace ArrowLogic
         
         private void Start()
         {
-            StartCoroutine(SpawningArrows());
             this.pool = new PoolMono<Arrow>(this.arrowPrefab, this.poolCount, this.transform);
             this.pool.autoExpand = this.autoExpand;
+            
+            StartCoroutine(SpawningArrows());
         }
 
         private IEnumerator SpawningArrows()
