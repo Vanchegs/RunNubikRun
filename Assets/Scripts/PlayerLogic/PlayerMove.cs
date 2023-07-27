@@ -7,32 +7,7 @@ namespace Vanchegs.PlayerLogic
         [SerializeField] private Rigidbody2D playerRB;
         [SerializeField] private float speed = 3f;
 
-        // private void Start()
-        // {
-        //     speed = 3f;
-        // }
-
         private void FixedUpdate() => Move();
-
-        // private void Move()
-        // {
-        //     if(Input.GetKey(KeyCode.W))
-        //     {
-        //         playerRB.velocity = Vector2.up * speed;
-        //     }
-        //     else if(Input.GetKey(KeyCode.S))
-        //     {
-        //         playerRB.velocity = Vector2.down * speed;
-        //     }
-        //     else if(Input.GetKey(KeyCode.D))
-        //     {
-        //         playerRB.velocity = Vector2.right * speed;
-        //     }
-        //     else if(Input.GetKey(KeyCode.A))
-        //     {
-        //         playerRB.velocity = Vector2.left * speed;
-        //     }
-        // }
 
         private void Move()
         {
