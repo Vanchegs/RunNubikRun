@@ -7,7 +7,8 @@ namespace Vanchegs
     public class Diamond : MonoBehaviour
     {
         [SerializeField] GameObject diamondGO;
-        public Transform diamondTransform;        
+        public Transform diamondTransform;
+        public bool diamondIsTake = false;
 
         public void DiamondIsActive(GameObject diamond, bool isActive)
         {
@@ -18,6 +19,7 @@ namespace Vanchegs
         {
             if(collision.CompareTag("Player"))
             {
+                diamondIsTake = true;
                 DiamondIsActive(diamondGO, false);
             }
         }

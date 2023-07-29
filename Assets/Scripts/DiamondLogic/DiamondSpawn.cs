@@ -19,13 +19,16 @@ namespace Vanchegs
             while(true)
             {
                 RetransformDiamond();
-                yield return new WaitForSeconds(1);
+                if(diamondPrefab.diamondIsTake == true)
+                {
+                    yield return new WaitForSeconds(5);
+                }
             }
         }
 
         private void RetransformDiamond()
         {
-            diamondPrefab.diamondTransform = diamandPoints[Random.Range(0, diamandPoints.Length)];
+            diamondPrefab.diamondTransform.position = diamandPoints[Random.Range(0, diamandPoints.Length)].position;
             diamondPrefab.DiamondIsActive(diamondPrefab.gameObject, true);
         }
     }

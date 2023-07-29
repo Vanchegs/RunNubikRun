@@ -114,3 +114,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f4d22b8cd8504249b9d4237c9e53d8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  diamondGO: {fileID: 3357296587447259647}
+  diamondTransform: {fileID: 3357296587447259642}
