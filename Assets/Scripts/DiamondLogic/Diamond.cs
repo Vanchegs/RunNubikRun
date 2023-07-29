@@ -6,11 +6,20 @@ namespace Vanchegs
 {
     public class Diamond : MonoBehaviour
     {
-        private Transform diamondTransform;
+        [SerializeField] GameObject diamondGO;
+        public Transform diamondTransform;        
 
         public void DiamondIsActive(GameObject diamond, bool isActive)
         {
             diamond.SetActive(isActive);
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if(collision.CompareTag("Player"))
+            {
+                DiamondIsActive(diamondGO, false);
+            }
         }
     }
 }
