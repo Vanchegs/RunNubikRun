@@ -6,7 +6,7 @@ namespace Vanchegs
 {
     public class DiamondSpawn : MonoBehaviour
     {
-        [SerializeField] private Transform[] diamandPoints = new Transform[2];
+        [SerializeField] private Transform[] diamandPoints;
         [SerializeField] private Diamond diamondPrefab;
 
         private void Start()
@@ -25,7 +25,7 @@ namespace Vanchegs
 
         private void RetransformDiamond()
         {
-            diamondPrefab.diamondTransform = diamandPoints[Random.Range(0, 1)];
+            diamondPrefab.diamondTransform = diamandPoints[Random.Range(0, diamandPoints.Length)];
             diamondPrefab.DiamondIsActive(diamondPrefab.gameObject, true);
         }
     }
