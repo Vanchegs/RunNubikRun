@@ -19,10 +19,8 @@ namespace Vanchegs
             while(true)
             {
                 RetransformDiamond();
-                if(diamondPrefab.diamondIsTake == true)
-                {
-                    yield return new WaitForSeconds(5);
-                }
+                
+                yield return new WaitForSeconds(5);
             }
         }
 
