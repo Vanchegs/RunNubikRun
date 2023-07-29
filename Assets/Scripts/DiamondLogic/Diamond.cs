@@ -6,6 +6,16 @@ namespace Vanchegs
 {
     public class Diamond : MonoBehaviour
     {
+        private Transform diamondTransform;
+
+        public void DiamondOn(GameObject diamond)
+        {
+            diamond.SetActive(true);
+        }
         
+        public void DiamondOff(GameObject diamond)
+        {
+            diamond.SetActive(false);
+        }
     }
 }
