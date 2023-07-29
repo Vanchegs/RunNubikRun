@@ -8,14 +8,9 @@ namespace Vanchegs
     {
         private Transform diamondTransform;
 
-        public void DiamondOn(GameObject diamond)
+        public void DiamondIsActive(GameObject diamond, bool isActive)
         {
-            diamond.SetActive(true);
-        }
-        
-        public void DiamondOff(GameObject diamond)
-        {
-            diamond.SetActive(false);
+            diamond.SetActive(isActive);
         }
     }
 }
