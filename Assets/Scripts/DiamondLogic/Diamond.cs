@@ -19,8 +19,8 @@ namespace Vanchegs
         {
             if(collision.CompareTag("Player"))
             {
-                diamondIsTake = true;
                 DiamondIsActive(diamondGO, false);
+                diamondIsTake = true;
             }
         }
     }

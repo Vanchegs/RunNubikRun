@@ -8,19 +8,27 @@ namespace Vanchegs
     {
         [SerializeField] private Transform[] diamandPoints;
         [SerializeField] private Diamond diamondPrefab;
+        private int coolDown = 5;
 
         private void Start()
         {
             StartCoroutine("SpawningDiamonds");
+            RetransformDiamond();
         }
 
         private IEnumerator SpawningDiamonds()
         {
             while(true)
             {
-                RetransformDiamond();
-                
-                yield return new WaitForSeconds(5);
+                if (diamondPrefab.diamondIsTake == true)
+                {
+                    RetransformDiamond();
+                    yield return new WaitForSeconds(coolDown);
+                }
+                else
+                {
+                    yield return new WaitForEndOfFrame();
+                }
             }
         }
 
