@@ -8,7 +8,7 @@ namespace Vanchegs
     {
         [SerializeField] private Transform[] diamandPoints;
         [SerializeField] private Diamond diamondPrefab;
-        private int coolDown = 5;
+        private int coolDown = 8;
 
         private void Start()
         {
