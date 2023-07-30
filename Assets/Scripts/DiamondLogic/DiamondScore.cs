@@ -1,21 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 namespace Vanchegs
 {
     public class DiamondScore : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
-        {
+        [SerializeField] private TMP_Text scoreText;
+        private int score = 0;
         
+        void FixedUpdate()
+        {
+            scoreText.text = "" + score;
         }
 
-        // Update is called once per frame
-        void Update()
+        public void PlusScore()
         {
-        
+            score++;
         }
     }
 }
