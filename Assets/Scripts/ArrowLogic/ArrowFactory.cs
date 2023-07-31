@@ -6,14 +6,13 @@ namespace Vanchegs.ArrowLogic
     public class ArrowFactory : MonoBehaviour
     {
         [SerializeField] private int spawnPointX;
-        [SerializeField] private float spawnRate;
         [SerializeField] private Arrow arrowPrefab;
         [SerializeField] private int poolCount = 20;
         [SerializeField] private bool autoExpand;
         [SerializeField] private ArrowConfig arrowsConfig;
-
+        private float spawnRate = 1;
         private PoolMono<Arrow> pool;
-
+        
         private void Start()
         {
             pool = new PoolMono<Arrow>(arrowPrefab, poolCount, transform)
