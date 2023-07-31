@@ -9,7 +9,7 @@ namespace Vanchegs
         [SerializeField] GameObject diamondGO;
         public Transform diamondTransform;
         public bool diamondIsTake = false;
-
+        
         public void DiamondIsActive(GameObject diamond, bool isActive)
         {
             diamond.SetActive(isActive);
