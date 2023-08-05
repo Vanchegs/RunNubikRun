@@ -10,7 +10,7 @@ namespace Vanchegs.ArrowLogic
         [SerializeField] private int poolCount = 20;
         [SerializeField] private bool autoExpand;
         [SerializeField] private ArrowConfig arrowsConfig;
-        private float spawnRate = 1;
+        private float spawnRate = 1.7f;
         private PoolMono<Arrow> pool;
         
         private void Start()

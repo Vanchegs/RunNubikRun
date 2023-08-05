@@ -15,11 +15,11 @@ namespace Vanchegs
         private void Start()
         {
             LoadHighScore();
+            scoreText.text = "" + score;
         }
 
         private void FixedUpdate()
         {
-            scoreText.text = "" + score;
             highestScoreText.text = "" + highestScore;
 
             if (score > highestScore)
@@ -53,6 +53,7 @@ namespace Vanchegs
             if (collision.CompareTag("Player"))
             {
                 PlusScore();
+                scoreText.text = "" + score;
             }
         }
     }
