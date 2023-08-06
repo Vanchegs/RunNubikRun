@@ -10,7 +10,7 @@ namespace Vanchegs.ArrowLogic
         [SerializeField] private int poolCount = 20;
         [SerializeField] private bool autoExpand;
         [SerializeField] private ArrowConfig arrowsConfig;
-        private float spawnRate = 1.7f;
+        public float spawnRate = 2.5f;
         private PoolMono<Arrow> pool;
         
         private void Start()
@@ -21,6 +21,7 @@ namespace Vanchegs.ArrowLogic
             };
 
             StartCoroutine(SpawningArrows());
+            StartCoroutine(DecreaseSpawnRate());
         }
 
         private IEnumerator SpawningArrows()
@@ -30,6 +31,16 @@ namespace Vanchegs.ArrowLogic
                 CreateNewArrow();
 
                 yield return new WaitForSeconds(spawnRate);
+            }
+        }
+
+        private IEnumerator DecreaseSpawnRate()
+        {
+            while(spawnRate > 1.5f)
+            {
+                spawnRate = spawnRate - 0.1f;
+
+                yield return new WaitForSeconds(4);
             }
         }
 
