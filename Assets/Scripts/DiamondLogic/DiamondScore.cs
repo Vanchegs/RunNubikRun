@@ -22,11 +22,7 @@ namespace Vanchegs
         {
             highestScoreText.text = "" + highestScore;
 
-            if (score > highestScore)
-            {
-                highestScore = score;
-                SaveHighScore();
-            }
+            
         }
 
         public void PlusScore()
@@ -54,6 +50,11 @@ namespace Vanchegs
             {
                 PlusScore();
                 scoreText.text = "" + score;
+                if (score > highestScore)
+                {
+                    highestScore = score;
+                    SaveHighScore();
+                }
             }
         }
     }
