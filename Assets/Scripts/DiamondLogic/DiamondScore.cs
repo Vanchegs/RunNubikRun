@@ -16,18 +16,23 @@ namespace Vanchegs
         {
             LoadHighScore();
             scoreText.text = "" + score;
-        }
-
-        private void FixedUpdate()
-        {
             highestScoreText.text = "" + highestScore;
-
-            
         }
 
-        public void PlusScore()
+        private void PlusScore()
         {
             score++;
+            scoreText.text = "" + score;
+        }
+
+        private void UpdateHighestScore()
+        {
+            if (score > highestScore)
+            {
+                 highestScore = score;
+                 highestScoreText.text = "" + highestScore;
+                 SaveHighScore();
+            }
         }
 
         private void SaveHighScore()
@@ -49,12 +54,7 @@ namespace Vanchegs
             if (collision.CompareTag("Player"))
             {
                 PlusScore();
-                scoreText.text = "" + score;
-                if (score > highestScore)
-                {
-                    highestScore = score;
-                    SaveHighScore();
-                }
+                UpdateHighestScore();
             }
         }
     }

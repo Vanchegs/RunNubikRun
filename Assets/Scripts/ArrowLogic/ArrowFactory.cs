@@ -40,7 +40,7 @@ namespace Vanchegs.ArrowLogic
             {
                 spawnRate = spawnRate - 0.1f;
 
-                yield return new WaitForSeconds(4);
+                yield return new WaitForSeconds(5);
             }
         }
 
