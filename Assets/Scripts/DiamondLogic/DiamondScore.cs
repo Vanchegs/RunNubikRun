@@ -9,6 +9,8 @@ namespace Vanchegs
     {
         [SerializeField] private TMP_Text scoreText;
         [SerializeField] private TMP_Text highestScoreText;
+        [SerializeField] private TMP_Text menuScoreText;
+        [SerializeField] private TMP_Text menuHighestScoreText;
         private float score = 0;
         private float highestScore = 0;
 
@@ -19,12 +21,16 @@ namespace Vanchegs
             LoadHighScore();
             scoreText.text = "" + score;
             highestScoreText.text = "" + highestScore;
+            
+
         }
 
         private void PlusScore()
         {
             score++;
             scoreText.text = "" + score;
+            menuScoreText.text = "—чет:" + score;
+            menuHighestScoreText.text = "–екорд:" + highestScore;
         }
 
         private void UpdateHighestScore()
