@@ -21,7 +21,9 @@ namespace Vanchegs
             LoadHighScore();
             scoreText.text = "" + score;
             highestScoreText.text = "" + highestScore;
-            
+            menuScoreText.text = "—чет:" + score;
+            menuHighestScoreText.text = "–екорд:" + highestScore;
+
 
         }
 
