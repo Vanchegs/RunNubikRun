@@ -10,7 +10,6 @@ namespace Vanchegs.PlayerLogic
         [SerializeField] private GameObject diamond;
         [SerializeField] private GameObject scorePanel;
         [SerializeField] private GameObject spawners;
-        public bool deathFlag = false;
 
 
         private void OnTriggerEnter2D(Collider2D collision)
