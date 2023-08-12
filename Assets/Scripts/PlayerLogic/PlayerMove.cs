@@ -15,15 +15,9 @@ namespace Vanchegs.PlayerLogic
 
         void FixedUpdate()
         {
-            float moveHorizontal = Input.GetAxis("Horizontal");
-            float moveVertical = Input.GetAxis("Vertical");
-            float moveJoystickHorizontal = myJoystick.Horizontal;
-            float moveJoystickVertical = myJoystick.Vertical;
-
-            Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-            Vector2 joystickMovement = new Vector2(moveJoystickHorizontal, moveJoystickVertical);
+            rb.velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            Vector2 movement = new Vector2(myJoystick.Horizontal, myJoystick.Vertical);
             rb.velocity = movement * speed;
-            rb.velocity = joystickMovement * speed;
         }
     }
 }
