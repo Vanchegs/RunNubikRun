@@ -4,28 +4,26 @@ namespace Vanchegs.PlayerLogic
 {
     public class PlayerMove : MonoBehaviour
     {
-        [SerializeField] private Rigidbody2D playerRB;
-        [SerializeField] private float speed = 3f;
+        private float speed = 3f;
+        [SerializeField] private Joystick myJoystick;
+        private Rigidbody2D rb;
 
-        private void FixedUpdate() => Move();
-
-        private void Move()
+        void Start()
         {
-            var direction = Vector2.zero;
+            rb = GetComponent<Rigidbody2D>();
+        }
 
-            if (Input.GetKey(KeyCode.W))
-                direction += Vector2.up;
+        void FixedUpdate()
+        {
+            float moveHorizontal = Input.GetAxis("Horizontal");
+            float moveVertical = Input.GetAxis("Vertical");
+            float moveJoystickHorizontal = myJoystick.Horizontal;
+            float moveJoystickVertical = myJoystick.Vertical;
 
-            if (Input.GetKey(KeyCode.S))
-                direction += Vector2.down;
-
-            if (Input.GetKey(KeyCode.D))
-                direction += Vector2.right;
-
-            if (Input.GetKey(KeyCode.A))
-                direction += Vector2.left;
-
-            playerRB.velocity = direction.normalized * speed;
+            Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+            Vector2 joystickMovement = new Vector2(moveJoystickHorizontal, moveJoystickVertical);
+            rb.velocity = movement * speed;
+            rb.velocity = joystickMovement * speed;
         }
     }
 }

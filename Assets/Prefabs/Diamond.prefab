@@ -131,3 +131,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 0}
+  highestScoreText: {fileID: 0}
+  menuScoreText: {fileID: 0}
+  menuHighestScoreText: {fileID: 0}
