@@ -15,9 +15,25 @@ namespace Vanchegs.PlayerLogic
 
         void FixedUpdate()
         {
-            rb.velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+            {
+                controlTroughKeyboard();
+            }
+            else
+            {
+                controlThroughJoystick();
+            }
+        }
+
+        private void controlThroughJoystick()
+        {
             Vector2 movement = new Vector2(myJoystick.Horizontal, myJoystick.Vertical);
             rb.velocity = movement * speed;
+        }
+
+        private void controlTroughKeyboard()
+        {
+            rb.velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * speed;
         }
     }
 }
