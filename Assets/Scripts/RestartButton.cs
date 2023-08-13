@@ -7,9 +7,10 @@ namespace Vanchegs
 {
     public class RestartButton : MonoBehaviour
     {
-        public void RestartScene()
+        public void StartScene()
         {
-            SceneManager.LoadScene("GameplayScene");
+            SceneManager.LoadSceneAsync("GameplayScene");
+            Debug.Log("Утауща");
         }
     }
 }
