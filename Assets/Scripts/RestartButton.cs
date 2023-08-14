@@ -10,7 +10,6 @@ namespace Vanchegs
         public void StartScene()
         {
             SceneManager.LoadSceneAsync("GameplayScene");
-            Debug.Log("Утауща");
         }
     }
 }

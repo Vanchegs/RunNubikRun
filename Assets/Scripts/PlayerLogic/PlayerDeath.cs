@@ -1,4 +1,5 @@
 using UnityEngine;
+using YG;
 
 namespace Vanchegs.PlayerLogic
 {
@@ -10,6 +11,7 @@ namespace Vanchegs.PlayerLogic
         [SerializeField] private GameObject diamond;
         [SerializeField] private GameObject scorePanel;
         [SerializeField] private GameObject spawners;
+        public static bool deathFlag = false;
 
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -17,10 +19,12 @@ namespace Vanchegs.PlayerLogic
             if(collision.CompareTag("Arrow"))
             {
                 Destroy(player);
+                deathFlag = true;
                 menuPanel.SetActive(true);
                 diamond.SetActive(false);
                 scorePanel.SetActive(false);
                 spawners.SetActive(false);
+                YandexGame.FullscreenShow();
             }
         }
     }
