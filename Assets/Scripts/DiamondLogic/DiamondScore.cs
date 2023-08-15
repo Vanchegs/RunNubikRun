@@ -14,8 +14,6 @@ namespace Vanchegs
         private float score = 0;
         private float highestScore = 0;
 
-        //private bool deathFlag = PlayerLogic.PlayerDeath.deathFlag;
-
         private void Start()
         {
             LoadHighScore();
@@ -23,8 +21,6 @@ namespace Vanchegs
             highestScoreText.text = "" + highestScore;
             menuScoreText.text = "—чет:" + score;
             menuHighestScoreText.text = "–екорд:" + highestScore;
-
-
         }
 
         private void PlusScore()
