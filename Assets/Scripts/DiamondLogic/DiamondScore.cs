@@ -26,9 +26,6 @@ namespace Vanchegs
         private void PlusScore()
         {
             score++;
-            scoreText.text = "" + score;
-            menuScoreText.text = "—чет:" + score;
-            menuHighestScoreText.text = "–екорд:" + highestScore;
         }
 
         private void UpdateHighestScore()
@@ -60,6 +57,9 @@ namespace Vanchegs
             if (collision.CompareTag("Player"))
             {
                 PlusScore();
+                scoreText.text = "" + score;
+                menuScoreText.text = "—чет:" + score;
+                menuHighestScoreText.text = "–екорд:" + highestScore;
                 UpdateHighestScore();
             }
         }

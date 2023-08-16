@@ -11,6 +11,7 @@ namespace Vanchegs.PlayerLogic
         [SerializeField] private GameObject diamond;
         [SerializeField] private GameObject scorePanel;
         [SerializeField] private GameObject spawners;
+        [SerializeField] private GameObject joystick;
         public bool deathFlag = false;
 
 
@@ -21,6 +22,7 @@ namespace Vanchegs.PlayerLogic
                 player.SetActive(false);
                 deathFlag = true;
                 menuPanel.SetActive(true);
+                joystick.SetActive(false);
                 diamond.SetActive(false);
                 scorePanel.SetActive(false);
                 spawners.SetActive(false);

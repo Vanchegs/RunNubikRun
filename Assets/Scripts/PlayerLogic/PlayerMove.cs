@@ -11,27 +11,30 @@ namespace Vanchegs.PlayerLogic
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
+            ControlThroughJoystick();
         }
 
         void FixedUpdate()
         {
-            if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
             {
-                controlTroughKeyboard();
+                ControlThroughKeyboard();
             }
             else
             {
-                controlThroughJoystick();
+                ControlThroughJoystick();
             }
         }
 
-        private void controlThroughJoystick()
+        private void ControlThroughJoystick()
         {
-            Vector2 movement = new Vector2(myJoystick.Horizontal, myJoystick.Vertical);
-            rb.velocity = movement * speed;
+            if (myJoystick != null)
+            {
+                rb.velocity = new Vector2(myJoystick.Horizontal, myJoystick.Vertical) * speed;
+            }
         }
 
-        private void controlTroughKeyboard()
+        private void ControlThroughKeyboard()
         {
             rb.velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * speed;
         }
