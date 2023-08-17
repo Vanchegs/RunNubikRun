@@ -5,13 +5,12 @@ namespace Vanchegs.PlayerLogic
     public class PlayerMove : MonoBehaviour
     {
         private float speed = 3f;
-        [SerializeField] private Joystick myJoystick;
+        [SerializeField] private FloatingJoystick myJoystick;
         private Rigidbody2D rb;
 
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
-            ControlThroughJoystick();
         }
 
         void FixedUpdate()
@@ -30,7 +29,7 @@ namespace Vanchegs.PlayerLogic
         {
             if (myJoystick != null)
             {
-                rb.velocity = new Vector2(myJoystick.Horizontal, myJoystick.Vertical) * speed;
+                rb.velocity = new Vector2(myJoystick.Horizontal * speed, myJoystick.Vertical * speed);
             }
         }
 
