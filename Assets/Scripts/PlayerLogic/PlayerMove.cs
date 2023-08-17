@@ -11,6 +11,7 @@ namespace Vanchegs.PlayerLogic
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
+
         }
 
         void FixedUpdate()

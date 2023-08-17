@@ -34,6 +34,7 @@ namespace Vanchegs
             {
                  highestScore = score;
                  highestScoreText.text = "" + highestScore;
+                 menuHighestScoreText.text = "Рекорд:" + highestScore;
                  SaveHighScore();
             }
         }
