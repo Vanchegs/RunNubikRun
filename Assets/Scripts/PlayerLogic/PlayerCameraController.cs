@@ -7,44 +7,29 @@ namespace Vanchegs
     public class PlayerCameraController : MonoBehaviour
     {
         private Camera mainCamera;
-        private float screenWidth;
-        private float screenHeight;
+        private float minX, maxX, minY, maxY;
+        private float playerWidth, playerHeight;
 
-        private void Start()
+        void FixedUpdate()
         {
             mainCamera = Camera.main;
 
-            // Получаем разрешение экрана
-            screenWidth = Screen.width;
-            screenHeight = Screen.height;
-        }
+            // Получение размеров экрана
+            float screenHeight = 2f * mainCamera.orthographicSize;
+            float screenWidth = screenHeight * mainCamera.aspect;
 
-        private void Update()
-        {
-            // Получаем позицию игрока в мировых координатах
-            Vector3 playerPosition = mainCamera.WorldToScreenPoint(transform.position);
+            // Получение размеров игрока
+            playerWidth = GetComponent<Renderer>().bounds.size.x;
+            playerHeight = GetComponent<Renderer>().bounds.size.y;
 
-            // Проверяем, выходит ли позиция игрока за границы экрана
-            if (playerPosition.x < 0)
-            {
-                playerPosition.x = 0;
-            }
-            else if (playerPosition.x > screenWidth)
-            {
-                playerPosition.x = screenWidth;
-            }
-
-            if (playerPosition.y < 0)
-            {
-                playerPosition.y = 0;
-            }
-            else if (playerPosition.y > screenHeight)
-            {
-                playerPosition.y = screenHeight;
-            }
-
-            // Обновляем позицию игрока в мировых координатах
-            transform.position = mainCamera.ScreenToWorldPoint(playerPosition);
+            // Рассчет границ экрана с учетом размера игрока
+            minX = -(screenWidth / 2f) + (playerWidth / 2f);
+            maxX = (screenWidth / 2f) - (playerWidth / 2f);
+            minY = -(screenHeight / 2f) + (playerHeight / 2f);
+            maxY = (screenHeight / 2f) - (playerHeight / 2f);
+            float clampedX = Mathf.Clamp(transform.position.x, minX, maxX);
+            float clampedY = Mathf.Clamp(transform.position.y, minY, maxY);
+            transform.position = new Vector3(clampedX, clampedY, transform.position.z);
         }
     }
 }
