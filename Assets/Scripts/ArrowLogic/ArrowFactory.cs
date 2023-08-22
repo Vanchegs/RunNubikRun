@@ -46,7 +46,7 @@ namespace Vanchegs.ArrowLogic
 
         private void CreateNewArrow()
         {
-            var newPosition = new Vector3(spawnPointX, Random.Range(-4.5f, 4.5f));
+            var newPosition = new Vector3(spawnPointX, Random.Range(-4.5f, 3.3f));
 
             var arrow = pool.GetFreeElement();
 
